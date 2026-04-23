@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -74,7 +74,6 @@
       <h1 class="text-5xl font-bold mb-2">Твой стиль готов!</h1>
       <p id="result-subtitle" class="text-xl text-zinc-400"></p>
     </div>
-
     <div id="result-content" class="space-y-10"></div>
 
     <div class="flex flex-wrap gap-4 justify-center mt-12">
@@ -84,7 +83,6 @@
     </div>
   </div>
 </div>
-
 <script>
 // ==================== ДАННЫЕ ====================
 const surveyData = {
@@ -144,8 +142,7 @@ function renderSurvey() {
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     `;
-
-    items.forEach(item => {
+items.forEach(item => {
       const isSelected = selected.includes(item.id);
       html += `
         <div onclick="toggleSelect('${section.key}', ${item.id})" 
@@ -162,7 +159,7 @@ function renderSurvey() {
         </div>`;
     });
 
-    html += `</div></div>`;
+    html += </div></div>;
     container.innerHTML += html;
   });
 }
@@ -183,7 +180,7 @@ function toggleSelect(category, id) {
 // Остальные функции (finishSurvey, renderResults, shareResults и т.д.) оставил без изменений
 function finishSurvey() {
   if (Object.values(selections).some(arr => arr.length !== 5)) {
-    alert("❗ Выбери ровно 5 позиций в каждой категории!");
+    alert("❗️ Выбери ровно 5 позиций в каждой категории!");
     return;
   }
   document.getElementById('survey-screen').classList.add('hidden');
@@ -196,7 +193,7 @@ function renderResults() {
   const subtitle = document.getElementById('result-subtitle');
   subtitle.textContent = currentGender === 'male' ? 'Твой мужской вайб 🔥' : 'Твой женский вайб ✨';
 
-  let html = `<div class="space-y-12">`;
+  let html = <div class="space-y-12">;
 
   const categories = [
     {key: 'tshirts', title: 'Футболки 👕'},
@@ -222,7 +219,7 @@ function renderResults() {
       </div>`;
   });
 
-  html += `</div>`;
+  html += </div>;
   container.innerHTML = html;
 }
 
@@ -238,7 +235,7 @@ async function shareResults() {
     const names = selections[cat.key].map(id => 
       surveyData[currentGender][cat.key].find(i => i.id === id).name
     );
-    text += `${cat.title}:\n${names.join('\n')}\n\n`;
+    text += ${cat.title}:\n${names.join('\n')}\n\n;
   });
 
   text += "\nСделано в стильном опроснике 😉";
